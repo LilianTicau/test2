@@ -16,6 +16,7 @@ test('test', async ({ page }) => {
     await page.getByRole('button', { name: 'Conectare' }).click();
 
     ////cgfcgfcgvjhghvhgvhgv
+    ///hbjhjh
     await page.getByLabel('Email', { exact: true }).click();
     await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.com');
 
