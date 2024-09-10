@@ -61,6 +61,7 @@ test('test', async ({ page }) => {
 
     const CodP = await page.getByLabel('Cod poștal').inputValue();
     console.log('Valoarea CodP este:', CodP);
+    console.log('Valoarea CodP1 este:', CodP);
 
     expect(pageTitle).toBe('Bestseller.md - Librărie online cu Livrare Rapidă în Chișinau și Moldova - Bestseller.md');
 
