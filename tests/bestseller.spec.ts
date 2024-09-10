@@ -4,7 +4,8 @@ test('test', async ({ page }) => {
 
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
-    console.log('Titlul paginii este', pageTitle);
+    const pageDescrition = await page.getAttribute('meta[name="keywords"]', 'content');
+    console.log('Titlul paginii este', pageDescrition);
 
     await page.getByLabel('Contul meu').click();
     await page.getByRole('link', { name: 'Conectare' }).click();
@@ -14,7 +15,7 @@ test('test', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Parolă' }).fill('Virtuoz1954');
     await page.getByRole('button', { name: 'Conectare' }).click();
 
-
+    ////cgfcgfcgvjhghvhgvhgv
     await page.getByLabel('Email', { exact: true }).click();
     await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.com');
 
