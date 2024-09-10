@@ -5,12 +5,12 @@ test('test', async ({ page }) => {
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
     const pageDescrition = await page.getAttribute('meta[name="description"]', 'content');
-    const pagekeyword = await page.getAttribute('meta[name="keywords"]', 'content');
+    //const pagekeyword = await page.getAttribute('meta[name="keywords"]', 'content');
 
     //console.log('Titlul paginii este', pageTitle);
 
     console.log('Titlul paginii este', pageDescrition);
-    console.log('Titlul paginii este', pagekeyword);
+    //console.log('Titlul paginii este', pagekeyword);
 
 
     await page.getByLabel('Contul meu').click();
