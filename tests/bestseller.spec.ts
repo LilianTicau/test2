@@ -7,10 +7,9 @@ test('test', async ({ page }) => {
     const pageDescrition = await page.getAttribute('meta[name="description"]', 'content');
     //const pagekeyword = await page.getAttribute('meta[name="keywords"]', 'content');
 
-    //console.log('Titlul paginii este', pageTitle);
-
-    console.log('Titlul paginii este', pageDescrition);
-    //console.log('Titlul paginii este', pagekeyword);
+    console.log('Titlul paginii este', pageTitle);
+    console.log('Descrierea paginii este', pageDescrition);
+    //console.log('pagekeyword paginii sunt', pagekeyword);
 
 
     await page.getByLabel('Contul meu').click();
@@ -21,8 +20,6 @@ test('test', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Parolă' }).fill('Virtuoz1954');
     await page.getByRole('button', { name: 'Conectare' }).click();
 
-    ////cgfcgfcgvjhghvhgvhgv
-    ///hbjhjh
     await page.getByLabel('Email', { exact: true }).click();
     await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.com');
 
@@ -73,8 +70,6 @@ test('test', async ({ page }) => {
     expect(EmailFill).toBe(`ticau97@gmail.com`);
     expect(EmailFill).toMatch(`ticau`);
     expect(EmailFill).toBeTruthy();
-
-
 
     expect(CodP).toBe(`1234`);
     expect(CodP).toMatch(`12`);
