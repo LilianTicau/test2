@@ -1,45 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { Login } from '../global/bestseller-login.js';
 
 test('test-bestseller', async ({ page }) => {
+    const loginPage = new Login(page);
+    await loginPage.gotoLoginPage();
+    await loginPage.login();
 
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
-    //const pageDescrition = await page.getAttribute('meta[name="description"]', 'content');
-    //const pagekeyword = await page.getAttribute('meta[name="keywords"]', 'content');
-    //console.log('Titlul paginii este', pageTitle);
-    //console.log('Descrierea paginii este', pageDescrition);
-    //console.log('Page key paginii sunt', pagekeyword);
-
-    await page.getByLabel('Contul meu').click();
-    await page.getByRole('link', { name: 'Conectare' }).click();
-    await page.getByLabel('Email', { exact: true }).click();
-    await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.co');
-    await page.getByLabel('Email', { exact: true }).press('Tab');
-    await page.getByRole('textbox', { name: 'Parolă' }).fill('Virtuoz1954');
-    await page.getByRole('button', { name: 'Conectare' }).click();
-
-    await page.getByLabel('Email', { exact: true }).click();
-    await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.com');
-
-    const EmailFill = await page.getByLabel('Email', { exact: true }).inputValue();
-    console.log('Valoarea Email este:', EmailFill);
-
-    await page.getByLabel('Email', { exact: true }).press('Tab');
-    await page.getByRole('textbox', { name: 'Parolă' }).fill('Virtuoz1854');
-    await page.getByRole('textbox', { name: 'Parolă' }).press('Enter');
-    await page.getByLabel('Contul meu').click();
-    await page.getByRole('link', { name: 'Deconectare' }).click();
-    await page.waitForTimeout(1000);
-
-
-    await page.goto('https://www.bestseller.md/');
     await page.getByRole('link', { name: 'Retorică în fața morții.' }).first().click();
     await page.getByTitle('Adaugă în coș').click();
     await page.getByLabel('Cantitate').click();
     await page.getByLabel('Cantitate').fill('22');
     await page.getByRole('link', { name: 'Finalizați comanda' }).click();
     await page.getByRole('textbox', { name: 'Adresa Email *' }).click();
-    await page.getByRole('textbox', { name: 'Adresa Email *' }).fill('dddj');
+    await page.getByRole('textbox', { name: 'Adresa Email *' }).fill('ticau97@gmail.com');
+    const EmailFill = await page.getByRole('textbox', { name: 'Adresa Email *' }).inputValue();
+
     await page.getByLabel('Prenume').fill('j');
     await page.getByLabel('Prenume').click();
     await page.getByLabel('Prenume').fill('jjj');
@@ -59,10 +36,8 @@ test('test-bestseller', async ({ page }) => {
     await page.getByLabel('Număr de telefon').click();
     await page.getByLabel('Număr de telefon').fill('k');
     await page.locator('#checkout-step-shipping').click();
-    //await page.mouse.wheel(0,1500); //await page.evaluate(()=> {window.scrollBy(0,1500)});
 
     const CodP = await page.getByLabel('Cod poștal').inputValue();
-    console.log('Valoarea CodP este:', CodP);
 
     expect(pageTitle).toBe('Bestseller.md - Librărie online cu Livrare Rapidă în Chișinau și Moldova - Bestseller.md');
 
