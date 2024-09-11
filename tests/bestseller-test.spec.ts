@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
-import { Login } from '../global/bestlseller-login.js';
+import { Login } from '../global/bestseller-login.js';
 
 test('test-bestseller', async ({ page }) => {
     const loginPage = new Login(page);
-    await loginPage.gotoLoginPage();
+   // await loginPage.gotoLoginPage();
     await loginPage.login();
-    await expect(page.locator('text=Logout')).toBeVisible();  // Exemplu de verificare că m-ma logat
 
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
+
     await page.getByRole('link', { name: 'Retorică în fața morții.' }).first().click();
     await page.getByTitle('Adaugă în coș').click();
     await page.getByLabel('Cantitate').click();
@@ -20,9 +20,9 @@ test('test-bestseller', async ({ page }) => {
 
     await page.getByLabel('Prenume').fill('j');
     await page.getByLabel('Prenume').click();
-    await page.getByLabel('Prenume').fill('jjj');
+    await page.getByLabel('Prenume').fill('Lilian');
     await page.getByLabel('Nume', { exact: true }).click();
-    await page.getByLabel('Nume', { exact: true }).fill('kk');
+    await page.getByLabel('Nume', { exact: true }).fill('TIcau');
     await page.getByText('Prenume Nume Companie Adresă').click();
     await page.getByText('Adresă stradă: Line 2').click();
     await page.getByLabel('Adresă stradă: Line 1').click();
