@@ -4,14 +4,11 @@ test('test-bestseller', async ({ page }) => {
 
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
-    const pageDescrition = await page.getAttribute('meta[name="description"]', 'content');
+    //const pageDescrition = await page.getAttribute('meta[name="description"]', 'content');
     //const pagekeyword = await page.getAttribute('meta[name="keywords"]', 'content');
-
     //console.log('Titlul paginii este', pageTitle);
-
-    console.log('Descrierea paginii este', pageDescrition);
+    //console.log('Descrierea paginii este', pageDescrition);
     //console.log('Page key paginii sunt', pagekeyword);
-
 
     await page.getByLabel('Contul meu').click();
     await page.getByRole('link', { name: 'Conectare' }).click();
@@ -21,8 +18,6 @@ test('test-bestseller', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Parolă' }).fill('Virtuoz1954');
     await page.getByRole('button', { name: 'Conectare' }).click();
 
-    ////cgfcgfcgvjhghvhgvhgv
-    ///hbjhjh
     await page.getByLabel('Email', { exact: true }).click();
     await page.getByLabel('Email', { exact: true }).fill('ticau97@gmail.com');
 
@@ -71,11 +66,9 @@ test('test-bestseller', async ({ page }) => {
 
     expect(pageTitle).toBe('Bestseller.md - Librărie online cu Livrare Rapidă în Chișinau și Moldova - Bestseller.md');
 
-
     expect(EmailFill).toBe(`ticau97@gmail.com`);
     expect(EmailFill).toMatch(`ticau`);
     expect(EmailFill).toBeTruthy();
-
 
     expect(CodP).toBe(`1234`);
     expect(CodP).toMatch(`12`);
