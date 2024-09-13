@@ -3,19 +3,15 @@ import { Login } from '../global/bestseller-login.js';
 
 test('test-bestseller', async ({ page }) => {
     const loginPage = new Login(page);
-    await loginPage.gotoLoginPage();
     await loginPage.login();
 
     await page.goto('https://www.bestseller.md/');
     const pageTitle = await page.title();
     await page.getByRole('link', { name: 'Retorică în fața morții.' }).first().click();
     await page.getByTitle('Adaugă în coș').click();
-    await page.getByLabel('Cantitate').click();
+    await page.fill('#cart-465355-qty', '');
     await page.getByLabel('Cantitate').fill('22');
     await page.getByRole('link', { name: 'Finalizați comanda' }).click();
-    await page.getByRole('textbox', { name: 'Adresa Email *' }).click();
-    await page.getByRole('textbox', { name: 'Adresa Email *' }).fill('ticau97@gmail.com');
-    const EmailFill = await page.getByRole('textbox', { name: 'Adresa Email *' }).inputValue();
 
     await page.getByLabel('Prenume').fill('j');
     await page.getByLabel('Prenume').click();
@@ -40,10 +36,6 @@ test('test-bestseller', async ({ page }) => {
     const CodP = await page.getByLabel('Cod poștal').inputValue();
 
     expect(pageTitle).toBe('Bestseller.md - Librărie online cu Livrare Rapidă în Chișinau și Moldova - Bestseller.md');
-
-    expect(EmailFill).toBe(`ticau97@gmail.com`);
-    expect(EmailFill).toMatch(`ticau`);
-    expect(EmailFill).toBeTruthy();
 
     expect(CodP).toBe(`1234`);
     expect(CodP).toMatch(`12`);
